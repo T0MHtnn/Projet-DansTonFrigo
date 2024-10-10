@@ -1,0 +1,475 @@
+@font-face {
+	font-family: "Milky Coffee";
+	src: url("fonts/milky_coffee/Milky_Coffee.ttf");
+}
+
+@font-face {
+	font-family: "Handlee";
+	src: url("fonts/handlee/Handlee-Regular.ttf");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Style du body */
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+/*---------------------------------------------------------------------------------------------------*/
+/* Header */
+
+.header {
+	background: #1abc9c;
+	color: black;
+	display:grid;
+  	grid-template-columns: 20% 80%;
+	grid-template-areas: "left right";
+	height:100px;
+}
+
+#fondGaucheHeader{
+	grid-area: left;
+	background-color:#52A8B4;
+	border-right: solid #A3A3A3 4px;
+	height:100%;
+}
+
+#fondDroiteHeader{
+	grid-area: right;
+	background-color:white;
+	height:100%;
+}
+
+#containerHeader{
+	font-family: "Milky Coffee", sans-serif;
+	position:absolute;
+	top:0px;
+	width:100%;
+	height:auto;
+	
+	display:flex;
+	/*grid-template-columns: 20% 50% 30%;
+	grid-template-areas: "titre barre logos";
+	*/
+	flex-direction:row;
+	
+	background-color:#F58E54 ;
+    box-shadow: 0px 0px 10px #000,
+                0px 0px 30px #777;
+				
+	border-bottom-left-radius:10px;
+	border-bottom-right-radius:10px;
+	
+	
+}
+
+.boite_recherche{
+	flex:3.5 1 0;
+}
+
+h1{
+	text-align: center;
+	color:black;
+	padding:3px;
+	text-shadow: 1px 1px 2px grey;
+
+}
+
+.lienDiscret{
+	text-decoration:none;
+	color:black;	
+}
+
+.titre{
+	flex:3 1 0;	
+}
+/* barre de recherche */
+
+#boutonLoupe { 
+	position: absolute; 
+	left:791px;
+	top:14px;
+	
+	border: none;
+	background-color: rgba(255,255,255,0);
+	width:60px;
+	height:40px;
+	
+	border-radius:25px;
+}
+
+#loupe{
+	width:80%;
+}
+
+.centrage{
+	display: flex; /* contexte sur le parent */
+	flex-direction: column; /* direction d'affichage verticale */
+	justify-content: center;
+}
+
+.saisieRecette{
+	font-family: "Handlee", sans-serif;
+	
+	font-weight: bold;
+	
+	
+	width:100%;
+	height: 40px;
+	
+	font-size: 14px;
+	background-color:white;
+	
+	box-shadow: 0px 0px 5px #000,
+                0px 0px 15px #777;
+				
+	border-radius: 25px;
+	border: none;
+	border-bottom: 1px solid #e5e5e5;
+	padding-left:10px;
+
+	
+	outline: none;
+}
+
+/* icones cliquables */
+
+.navbar {
+	flex:3.5 1 0;
+	display: flex;
+	flex-direction:row;
+	flex-wrap: wrap;
+	justify-content:end;
+}
+
+
+.iconenav{
+	flex:1 1 0;
+	display: flex;
+	flex-direction:column;
+	flex-wrap: wrap;
+	
+	color:black;
+	text-decoration:none;
+	
+	position: relative;
+	padding: 0 3px;
+	transition: 0.4s ease;
+}
+
+.iconenav:hover{
+	color:#ccc;
+	
+}
+
+.iconenav::before{
+	content: '';
+	width: 100%;
+	height: 0%;
+	border-radius:10px;
+	background: #fff;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	transition: 0.4s ease;
+	
+}
+
+.iconenav:hover::before{
+	height:100%;
+	mix-blend-mode:difference;
+	
+}
+
+.icone_texte{
+	text-align:center;
+	object-fit:contain;
+	font-size:auto;
+}
+
+
+.image_icone {
+	width:50%;
+	aspect-ratio:3/2;
+	object-fit:contain;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.lien_icone {
+	width:20%;
+	margin: 10px;
+}
+
+
+/*---------------------------------------------------------------------------------------------------*/
+/* Container colonnes centrales */
+.row {  
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Création des 2 colonnes inégales au niveau de la zone centrale */
+/* Sidebar */
+.side {
+  flex: 20%;
+  background-color: #52A8B4;
+  padding: 20px;
+  border-right: solid #A3A3A3 4px;
+}
+
+/* Main */
+.main {
+  flex: 80%;
+  background-color: #DFD8D1;
+  padding: 20px;
+}
+
+/* Affichage des differentes recettes via la recherche */
+.recette {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: calc(100% / 3 - 10px);
+	margin-bottom: 20px;
+	box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+	overflow: hidden;
+    background-color: #9d9d9d;
+  }
+  
+  .recette:nth-child(3n+1) {
+	margin-right: 0;
+  }
+  
+  .RecetteGauche {
+	width: 66.67%;
+	padding: 10px;
+	box-sizing: border-box;
+  }
+  
+  .RecetteGauche h2 {
+	font-size: 20px;
+	margin: 0;
+	padding-right: 10px;
+  }
+  
+  .recette-img {
+	width: 100%;
+	height: 0;
+	padding-bottom: 56.25%;
+	position: relative;
+	overflow: hidden;
+  }
+  
+  .recette-img img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+  }
+  
+  .RecetteGauche p {
+	margin: 0;
+	font-size: 14px;
+  }
+  
+  .RecetteDroite {
+	width: 33.33%;
+	background-color: #9d9d9d;
+  }
+  
+  .recette-info {
+	padding: 10px;
+	border-bottom: 1px solid #ddd;
+  }
+  
+  .recette-difficulte,
+  .recette-temps {
+	margin-bottom: 10px;
+  }
+  
+  .recette-difficulte span,
+  .recette-temps span {
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 5px;
+  }
+  
+  ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+  }
+  
+  ul li {
+	font-size: 14px;
+	padding: 5px 10px;
+	border-bottom: 1px solid #ddd;
+  }
+
+/* scroller du main */
+
+.scroller {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  overflow:auto;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
+}
+
+/* Fake image, just for this example */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/*---------------------------------------------------------------------------------------------------*/
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+}
+
+/* Layout responsive - si écran de moins de 800px de largeur, le side et le main passent l'un en dessous de l'autre au lieu de l'un à côté de l'autre */
+@media (max-width: 800px) {
+	.row, .navbar {   
+		flex-direction: column;
+	}
+  
+	#fondDroiteHeader{
+		background-color:#52A8B4;
+	}
+  
+	#fondGaucheHeader{
+		border-style: none;
+	}
+	
+	h1{
+		text-align:center;
+		font-size:20px
+		/*peut le rendre très petit ou le supp quand gros zoom et agrandir la barre de recherche et icones a la place ou mettre les trucs les uns en dessous des autres*/
+	}
+	
+	#containerHeader{
+		flex-direction:column;
+	}
+	
+	.side {
+		padding-top: 150px;
+		border:none;
+	}
+
+	.main {
+		padding-top: 150px;
+	}
+	
+	.navbar{
+		flex-direction:row;
+		justify-content:start;
+		align-items:center;
+		width:max-width;
+	}
+	
+	.icone_texte{
+		font-size:90%;
+	}
+	
+}
+
+/* Layout responsive - si écran de moins de 600px de largeur, le side et le main passent l'un en dessous de l'autre au lieu de l'un à côté de l'autre */
+
+@media (max-width: 600px) {
+	.row, .navbar {   
+		flex-direction: column;
+	}
+  
+	#fondDroiteHeader{
+		background-color:#52A8B4;
+	}
+  
+	#fondGaucheHeader{
+		border-style: none;
+	}
+	
+	h1{
+		text-align:center;
+		font-size:20px
+		/*peut le rendre très petit ou le supp quand gros zoom et agrandir la barre de recherche et icones a la place ou mettre les trucs les uns en dessous des autres*/
+	}
+	
+	#containerHeader{
+		flex-direction:column;
+	}
+	
+	.side {
+		padding-top: 150px;
+		border:none;
+	}
+
+	.main {
+		padding-top: 150px;
+		
+	}
+	
+	.navbar{
+		flex-direction:row;
+		justify-content:start;
+		align-items:center;
+		width:max-width;
+	}
+	
+
+/* Layout responsive - si écran de moins de 360px de largeur, le side et le main passent l'un en dessous de l'autre au lieu de l'un à côté de l'autre */
+
+@media (max-width: 900px) {
+	.row, .navbar {   
+		flex-direction: column;
+	}
+  
+	#fondDroiteHeader{
+		background-color:#52A8B4;
+	}
+  
+	#fondGaucheHeader{
+		border-style: none;
+	}
+	
+	h1{
+		text-align:center;
+		font-size:20px
+		/*peut le rendre très petit ou le supp quand gros zoom et agrandir la barre de recherche et icones a la place ou mettre les trucs les uns en dessous des autres*/
+	}
+	
+	#containerHeader{
+		flex-direction:column;
+	}
+	
+	.side {
+		padding-top: 150px;
+		border:none;
+	}
+
+	.main {
+		padding-top: 150px;
+		
+	}
+	
+	.navbar{
+		flex-direction:row;
+		justify-content:start;
+		align-items:center;
+		width:max-width;
+	}
+	
+}
+
+
