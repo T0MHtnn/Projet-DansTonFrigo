@@ -1,0 +1,141 @@
+<?php
+require_once('connexionBDD.php');
+require_once('FonctionsTOM.php');
+require_once('component.php');
+require_once('fonctionsRecherches.php');
+// $bdd = connexionUserPDO();
+session_start();
+if(isset($_SESSION['connecte']) AND !empty($_SESSION['connecte']))
+{
+	$connecte = true;
+}
+else
+{
+	$connecte = false;
+}
+/*Barre recherche ingrédients*/
+if(isset($_POST['rechingr'])){
+	$rechingr = htmlspecialchars($_POST['rechingr']);
+}
+
+
+if(isset($_POST['rechingr']) AND !empty(trim($_POST['rechingr'])))			//trim() -> enlève les espaces de début / fin
+{
+	$bdd = connexionUserPDO();
+	$rechingr = htmlspecialchars($_POST['rechingr']);
+	$rep = $bdd->query('SELECT nomIngre FROM ingredients WHERE nomIngre LIKE "%'.$rechingr.'%" ORDER BY idingredient DESC');
+	$bdd = NULL;
+}
+if(isset($_POST['ajtlistingr']))		//bouton d'ajout à la liste d'ingrédient
+{
+	if(isset($_SESSION['listeingredient'])){
+		$nomIngre = htmlspecialchars($_POST['nomIngre']);
+		if(in_array($nomIngre,$_SESSION['listeingredient'])){
+			$dejaexist = true;
+			$_SESSION['dejaexist'] = $dejaexist;
+		}
+		else{
+			$dejaexist = false;
+			$_SESSION['dejaexist'] = $dejaexist;
+		}
+		if($dejaexist == false){
+			$_SESSION['listeingredient'][] = $nomIngre;
+			$listeingredient = $_SESSION['listeingredient'];
+		}
+		else{
+			$messg = '<ul><li><font color="blue">'.$nomIngre.' est déja présent dans vos ingrédients</font></li></ul>';
+			$_SESSION['messg'] = $messg;
+		}
+	}
+	else{
+		$_SESSION['listeingredient'] = [];
+		$_SESSION['listeingredient'][] = $_POST['nomIngre'];
+		$listeingredient = $_SESSION['listeingredient'];
+	}
+	
+
+}
+/*Bouton supprimer ingredients de la liste*/
+
+if(isset($_POST['suppingr'])){
+	supprimeringredientliste($_POST['nomIngre']);
+}
+/*Barre recherche recette*/
+if(isset($_POST['rech'])){
+	$rech = htmlspecialchars($_POST['rech']);
+}
+
+if(isset($_POST['rech']) AND !empty(trim($_POST['rech'])))			//trim() -> enlève les espaces de début / fin
+{
+	$bdd = connexionUserPDO();
+	$rech = htmlspecialchars($_POST['rech']);
+	$rep = $bdd->query('SELECT nomRecette FROM recettes WHERE nomRecette LIKE "%'.$rech.'%" ORDER BY idrecette DESC');	//Query = prepare + execute en 1 fonction
+	
+	$requete = $bdd->prepare("SELECT * FROM recettes WHERE nomRecette LIKE ?");
+	$requete->execute(array('%'.$_POST['rech'].'%'));
+	
+	$infosutili = $requete->fetchAll(PDO::FETCH_ASSOC);			//Récup infos sous forme tableau associatif
+	foreach($infosutili as $recette){
+		$idrecette = $recette['idrecette'];
+		$nomRecette = $recette['nomRecette'];
+		$tempsPrepa = $recette['tempsPrepa'];
+		$tempsCuisson = $recette['tempsCuisson'];
+		$tempsRepos = $recette['tempsRepos'];
+		$tempsTotal = $recette['tempsTotal'];
+		$noteGlobale = $recette['noteGlobale'];
+		$nbNotes = $recette['nbNotes'];
+		$difficulte = $recette['difficulte'];
+		$nbPersonnes = $recette['nbPersonnes'];
+		
+		$_SESSION['idrecette'] = $idrecette;
+		$_SESSION['nomRecette'] = $nomRecette;
+		$_SESSION['tempsPrepa'] = $tempsPrepa;
+		$_SESSION['tempsCuisson'] = $tempsCuisson;
+		$_SESSION['tempsRepos'] = $tempsRepos;
+		$_SESSION['tempsTotal'] = $tempsTotal;
+		$_SESSION['noteGlobale'] = $noteGlobale;
+		$_SESSION['nbNotes'] = $nbNotes;
+		$_SESSION['difficulte'] = $difficulte;
+		$_SESSION['nbPersonnes'] = $nbPersonnes;
+	}
+	$tabingr = renvoieIngredientsRecette($nomRecette);
+	if(!isset($cpt)){
+		$cpt=0;
+	}
+	$bdd = NULL;
+}
+?>
+
+<html lang="fr">
+
+<?php
+
+$linkPage = $_SERVER['PHP_SELF']; // lien de la page actuelle
+$name = basename($linkPage); // que le nom de la page
+$namePage = pathinfo($name, PATHINFO_FILENAME); // sans le .php
+HeaderHtml($namePage);
+
+?>
+
+	<body>
+
+		<div class="header">
+			<?php HeaderPage(); ?>
+		</div>
+
+		<div class="menuGauche">
+			<?php SlideBarGauche("Side1");?>
+		</div>
+		  
+		<div class="main">
+			<?php choixmain(); ?>
+			
+			<!-- Footer -->
+			<div class="footer">
+		  		<?php footer(); ?>
+			</div>
+
+		</div>
+		
+	</body>
+</html>

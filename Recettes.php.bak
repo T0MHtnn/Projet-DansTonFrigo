@@ -1,0 +1,72 @@
+<?php
+require ('component.php');
+session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Nos recettes : Dans Ton Frigo !</title>
+		<link href="Style_Accueil1.css" rel="stylesheet">
+
+		
+	</head>
+
+	<body>
+		<!-- Header -->
+		<div class="header">
+			<?php HeaderPage(); ?>
+		</div>
+		
+		
+		<div class="menuGauche">
+			<h3>Filtres</h3>
+
+			<h4>Difficulte:</h4>
+				<select name="difficulte" id="diff-select">
+					<option value="">Peu importe</option>
+					<option value="1">1 etoile</option>
+					<option value="2">2 etoiles</option>
+					<option value="3">3 etoiles</option>
+					<option value="4">4 etoiles</option>
+					<option value="5">5 etoiles</option>
+				</select>
+
+			<h4>Temps de preparation:</h4>
+				<select name="temps" id="temps-select">
+					<option value="">Peu importe</option>
+					<option value="1">moins de 10 minutes</option>
+					<option value="2">15 minutes</option>
+					<option value="3">30 minutes</option>
+					<option value="4">45 minutes</option>
+					<option value="5">plus de 45 minutes</option>
+				</select>
+
+			<h4>Nombre d'ingredients:</h4>
+				<select name="nb-ingredient" id="nb-ing-select">
+					<option value="">Peu importe</option>
+					<option value="1">moins de 3</option>
+					<option value="2">entre 3 et 5</option>
+					<option value="3">entre 5 et 7</option>
+					<option value="4">entre 7 et 10</option>
+					<option value="5">plus de 10</option>
+				</select>
+
+			<a href="Accueil.php" style="text-decoration:none; color:white; font-family:Handlee"><font size="+3">
+				<p class="icone_texte" >retour à l'accueil</p></font>
+				</a>
+
+		</div>
+
+
+		<div class="main">
+			
+			<h2>test</h2>
+
+			<div class="footer">
+		  		<?php footer(); ?>
+			</div>
+		</div>
+	</body>
+</html> 

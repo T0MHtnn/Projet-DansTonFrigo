@@ -1,0 +1,953 @@
+@font-face {
+	font-family: "Milky Coffee";
+	src: url("fonts/milky_coffee/Milky_Coffee.ttf");
+}
+
+@font-face {
+	font-family: "Handlee";
+	src: url("fonts/handlee/Handlee-Regular.ttf");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Style du body */
+body {
+	font-family: Arial;
+	margin: 0;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	/* overflow: hidden; */
+	position: relative;
+}
+
+.centrageTexte {
+	text-align: center;
+}
+
+/*---------------------------------------------------------------------------------------------------*/
+/* Header */
+
+.header {
+	font-family: "Milky Coffee", sans-serif;
+	background: #F58E54;
+	color: black;
+
+	position: fixed;
+
+	display: flex;
+	flex-direction: row;
+	height:80px;
+	width: 100%;
+
+	box-shadow: 0px 0px 10px #000,
+	0px 0px 30px #777;
+	
+	border-bottom-left-radius:10px;
+	border-bottom-right-radius:10px;
+
+	z-index: 2;
+}
+
+.accueil {
+	width: 30%;
+	display: flex;
+}
+
+/* Mascotte */
+
+.accueil .mascotte {
+	text-align: center;
+	overflow: visible;
+	width : 20%;
+}
+
+.image_mascotte {
+	z-index: -1;
+	width: 75%;
+	height: 98px;
+}
+
+.image_mascotte2 {
+	z-index: -1;
+	width: 75%;
+	height: 115px;
+}
+
+.accueil .titre{
+	text-align: center;
+	color:black;
+	padding:3px;
+	text-shadow: 1px 1px 2px grey;
+	width: 80%;
+}
+
+.boite_recherche{
+	width: 40%;
+	margin: 0px;
+}
+
+
+.lienDiscret{
+	text-decoration:none;
+	color:black;	
+}
+
+/* barre de recherche */
+
+#boutonLoupe { 
+	position: absolute; 
+	left:791px;
+	top:14px;
+	
+	border: none;
+	background-color: rgba(255,255,255,0);
+	width:60px;
+	height:40px;
+	
+	border-radius:25px;
+}
+
+#loupe{
+	width:80%;
+}
+
+.centrage{
+	display: flex; /* contexte sur le parent */
+	flex-direction: column; /* direction d'affichage verticale */
+	justify-content: center;
+	align-items: stretch;
+}
+
+.saisieRecette{
+	font-family: "Handlee", sans-serif;
+	
+	font-weight: bold;
+ 	position: relative;
+	
+	width:100%;
+	height: 40px;
+	
+	font-size: 14px;
+	
+	background-color:white;
+
+	box-shadow: 0px 0px 5px #000,
+                0px 0px 15px #777;
+				
+	border-radius: 25px;
+	border: none;
+	border-bottom: 1px solid hsl(0, 0%, 90%);
+	padding-left:10px;
+
+	z-index: 0;
+	outline: none;
+}
+
+/* icones cliquables */
+
+.navbar {
+	flex:3.5 1 0;
+	display: flex;
+	flex-direction:row;
+	flex-wrap: wrap;
+	justify-content:end;
+}
+
+
+.iconenav{
+	flex:1 1 0;
+	display: flex;
+	flex-direction:column;
+	flex-wrap: wrap;
+	
+	color:black;
+	text-decoration:none;
+	
+	position: relative;
+	padding: 0 3px;
+	transition: 0.4s ease;
+}
+
+.iconenav:hover{
+	color:#ccc;
+	
+}
+
+.iconenav::before{
+	content: '';
+	width: 100%;
+	height: 0%;
+	border-radius:10px;
+	background: #fff;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	transition: 0.4s ease;
+	
+}
+
+.iconenav:hover::before{
+	height:100%;
+	mix-blend-mode:difference;
+	
+}
+
+.icone_texte{
+	text-align:center;
+	object-fit:contain;
+	padding-top: 0px;
+	margin-top: 5px;
+	margin-bottom: 0px;
+}
+
+.image_icone {
+	width:40%;
+	aspect-ratio:3/2;
+	object-fit:contain;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom: 0px;
+	margin-top: -5px;
+	padding-top: 5px;
+	padding-bottom: 0px;
+}
+
+.lien_icone {
+	width:20%;
+	margin: 10px;
+}
+
+
+/*---------------------------------------------------------------------------------------------------*/
+
+/* menuGauche */
+.menuGauche {
+	background-color: #52A8B4;
+
+	flex-direction: column;
+	width: 20%;
+	margin-top: 80px;
+	margin-bottom: -80px;
+	height: 100%;
+	position: fixed;
+	z-index: 1;
+
+	box-shadow: 0px 0px 5px #000,
+				0px 0px 15px #777;
+}
+
+.side {
+
+	background-color: #52A8B4;
+	
+	padding-top: 70px;
+	border-right: solid #A3A3A3 4px; 
+
+	font-family: "Handlee", sans-serif;
+
+	width: 20%;
+	display: flex;
+	height: 100%;
+}
+
+
+.side1 {
+	height: auto;
+	font-family: "handlee", sans-serif;
+}
+
+.side2 {
+	height: 55%;
+}
+
+.side2-2 {
+	height: 70%;
+	overflow-y: scroll;
+	overflow:auto;
+}
+
+.side2-2::-webkit-scrollbar {
+  width: 20px; /* width of the entire scrollbar */
+}
+
+.side2-2::-webkit-scrollbar-track {
+  background: #52A8B4; /* color of the tracking area */
+  border-radius: 40px;
+}
+
+.side2-2::-webkit-scrollbar-thumb {
+  background-color: #A4A9A4; /* color of the scroll thumb */
+  border-radius: 40px; /* roundness of the scroll thumb */
+  border: 5px solid #52A8B4;
+}
+
+.side3 {
+	height: auto;
+	width: 100%;
+}
+
+.saisieIngredient {
+
+	font-family: "Handlee", sans-serif;
+	
+	font-weight: bold;
+	
+	width:95%;
+	height: 40px;
+	margin: 0px 5px;
+	
+	font-size: 14px;
+	
+	background-color:white;
+
+	box-shadow: 0px 0px 5px #000,
+                0px 0px 15px #777;
+				
+	border-radius: 25px;
+	border: none;
+	border-bottom: 1px solid #e5e5e5;
+	padding-left:10px;
+
+	outline: none;
+
+}
+
+#chercheRecetteIngredient {
+
+	font-family: "Handlee", sans-serif;
+	
+	font-weight: bold;
+	text-align: center;
+	
+	width:95%;
+	height: 40px;
+	margin: 0px 5px;
+	
+	font-size: 14px;
+	
+	background-color:#F58E54;
+
+	box-shadow: 0px 0px 5px #000,
+                0px 0px 15px #777;
+				
+	border-radius: 25px;
+	border: none;
+	border-bottom: 1px solid #9d9d9d;
+	padding-left:10px;
+
+	outline: none;
+}
+
+h1{
+	
+	text-align: center;
+	color:black;
+	padding:3px;
+	text-shadow: 1px 1px 2px grey;
+
+}
+
+h3{
+	margin : 20px;
+	font-size : 2em;
+	font-family: "Milky Coffee", sans-serif;
+	text-align: center;
+	background: #FFFFFF;
+	color: black;
+	display:grid;
+	height: 5%;
+	width: 80%;
+	border-radius: 10px;
+}
+
+h4{
+	font-family: "Handlee", sans-serif;
+	color: white;
+	font-size: 1.5em;
+}
+
+h5{
+	font-family: "Handlee", sans-serif;
+	color: white;
+	font-size: 1.5em;
+	text-decoration:underline;
+}
+
+select{
+	font-family: "Milky Coffee", sans-serif;
+	text-align: center;
+	background: #FFFFFF;
+	color: black;
+	display:grid;
+	margin : 20px;
+	height: 8%;
+	width: 80%;
+	border-radius: 10px;
+	font-size: 1.25em;
+}
+
+option{
+	font-size:1.25em;
+	font-family: "Milky Coffee", sans-serif;
+	text-align: center;
+	color: black;
+	height: 5%;
+	width: 70%;
+}
+
+/*---------------------------------------------------------------------------------------------------*/
+
+/* Main */
+.main {
+	background-color: white;
+
+	flex-direction: column;
+	
+	display: flex;
+	width: 80%;
+	height: 100%;
+	margin-top: 80px;
+	margin-left: 20%;
+	padding-left: 20px;
+	margin-bottom: auto;
+	/*
+	overflow-y: scroll;
+	overflow:auto; */
+
+	min-height:100vh;
+	z-index: 0;
+}
+
+
+.mainConnexion {
+	background-color: white;
+
+	flex-direction: column;
+	
+	display: flex;
+	width: 100%;
+	height: 100%;
+	margin-top: 80px;
+	padding-left: 20px;
+	margin-bottom: auto;
+	/*
+	overflow-y: scroll;
+	overflow:auto; */
+
+	min-height:100vh;
+	z-index: 0;
+}
+
+
+/* Admin */
+.colonneGest {
+	display : flex;
+	flex-direction:column;
+	flex-wrap : wrap;
+	justify-content:center;
+}
+
+.centrageTexte{
+	text-align: center;	
+	font-family:Handlee
+}
+
+.panneauSide{
+	background-color: #aaa;
+	width: auto;
+	padding: 3px;
+	border-radius: 20px;
+
+}
+
+.panneauSide:hover{ /*grossissement du bouton au passage dessus*/
+	
+	background-color : #52A8B4;
+	transition: ease-in 0.2s;
+	border:4px white solid;
+	/*
+	transform: scale(1.1);
+	*/
+}
+
+.lienPageModif{
+	width: auto;
+	text-decoration:none;	
+	color : white;
+	margin:1%;
+	
+}
+
+.textSide{
+	font-family:Handlee;
+	text-align:center;
+	font-size:120%;
+}
+
+#retourAccueil{
+	text-decoration:none;
+	color:white;
+	font-size: 150%;
+	
+}
+
+#titreAdmin{
+	color:white;
+}
+
+.imageRefRI{
+	width : 20%;
+}
+
+.texteGras{
+	font-weight : bold;
+}
+
+hr{
+	height:5px;
+}
+
+.tabLaterale{
+	display:flex;
+	/*grid-template-columns: 20% 50% 30%;
+	grid-template-areas: "titre barre logos";
+	*/
+	flex-direction:row;
+	flex-wrap : wrap;
+	justify-content:start;
+}
+
+.panneauLateral{
+	width: auto;
+	padding-left: 3%;
+	padding-right: 3%;
+	border-radius: 20px;
+	box-sizing: border-box; 
+}
+
+.block
+{
+  margin: 0 auto;
+  max-width: 900px;  
+}
+
+.input-res
+{
+  width: 100%;
+  max-width: 500px;
+  margin: 0;
+  box-sizing: border-box; 
+}
+
+
+/* boutons stylisés */
+.bouton {
+  position: relative;
+  display: inline-block;
+  margin: 1%;
+  padding: 0.5% 2%;
+  text-align: center;
+  font-size: 100%;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: black;
+  background: transparent;
+  cursor: pointer;
+  transition: ease-out 0.5s;
+  border: 2px solid black;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 0 white;
+}
+
+.bouton:hover {
+  color: white;
+  border:2px solid white;
+  box-shadow: inset 0 -100px 0 0 #52A8B4;
+}
+
+.bouton:active {
+  transform: scale(0.9);
+}
+
+
+
+#texteRetourAccueil {
+  color: white;
+  text-decoration: none;
+  font-size: 100%;
+  border: none;
+  background: none;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+}
+
+#texteRetourAccueil::before {
+  margin-left: auto;
+}
+
+#texteRetourAccueil::after, #texteRetourAccueil::before {
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: white;
+  display: block;
+  transition: 0.5s;
+}
+
+#texteRetourAccueil:hover::after, #texteRetourAccueil:hover::before {
+  width: 100%;
+}
+
+.souligner{
+	text-decoration:underline;
+}
+
+/*---------------------------------------------------------------------------------------------------*/
+/* Footer */
+.footer {
+	margin-top: auto;
+	height: 60px;
+	text-align: center;
+	background: #F58E54;
+	width:100%;
+	margin-left: -20px;
+	margin-right: 20px;
+
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+  }
+
+.footer2 {
+	height: 60px;
+	text-align: center;
+	background: #F58E54;
+	width:100%;
+	margin-left: -20px;
+	margin-right: 20px;
+	bottom: 0;
+	position: fixed;
+}
+
+.footerConnexion {
+	height: 60px;
+	background: #F58E54;
+	width:90%;
+
+	margin-top:30px;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+  }
+  
+.flex-footer{
+	display:flex;
+	flex-direction:row;
+	
+}
+
+.boutonFooter{
+	margin :20px;
+}
+
+
+/*---------------------------------------------------------------------------------------------------*/
+
+/* Layout pour les écrans de moins de 800px de largeur 
+*
+* Layout responsive - si écran de moins de 800px de largeur, 
+* le side et le main passent l'un en dessous de l'autre au lieu de l'un à côté de l'autre 
+*/
+@media only screen and (max-width: 800px) {
+	.container {
+	  flex-direction: column;
+	}
+	
+	.side, .main {
+	  flex: none;
+	  width: 100%;
+	}
+  }
+
+
+
+/* Layout responsive - si écran de moins de 600px de largeur, 
+le side et le main passent l'un en dessous de l'autre au lieu de l'un à côté de l'autre
+Les ingrédients passent en icone à ouvrir */
+
+/* Responsive */
+@media only screen and (max-width: 600px) {
+	/* Header */
+	.header {
+	  flex-direction: column;
+	  height: auto;
+	}
+	.accueil {
+	  width: 100%;
+
+	}
+	.accueil .mascotte {
+	  display: none;
+	}
+	.accueil .titre {
+	  width: 100%;
+	}
+	.boite_recherche {
+	  width: 100%;
+	}
+
+	.iconenav {
+		margin-top: 5px;
+	}
+
+	#boutonLoupe {
+	  left: auto;
+	  right: 10px;
+	}
+
+	/* Menu Gauche */
+	.menuGauche {
+	  width: 100%;
+	  height: auto;
+	  position: relative;
+	  margin-top: 20px;
+	  box-shadow: none;
+	}
+	.side {
+	  width: 100%;
+	  border-right: none;
+	  padding-top: 0px;
+	  flex-direction: row;
+	}
+	.side1, .side2, .side3 {
+	  height: auto;
+	  width: 33.33%;
+	}
+	.saisieIngredient {
+	  margin: 5px 5px 10px 5px;
+	}
+  }
+
+/* Layout responsive - si écran de moins de 360px de largeur, le side et le main passent l'un en dessous de l'autre au lieu de l'un à côté de l'autre */
+
+@media (max-width: 900px) {
+	.row, .navbar {   
+		flex-direction: column;
+	}
+  
+	#fondDroiteHeader{
+		background-color:#52A8B4;
+	}
+  
+	#fondGaucheHeader{
+		border-style: none;
+	}
+	
+	h1{
+		text-align:center;
+		font-size:20px
+		/*peut le rendre très petit ou le supp quand gros zoom et agrandir la barre de recherche et icones a la place ou mettre les trucs les uns en dessous des autres*/
+	}
+	
+	#containerHeader{
+		flex-direction:column;
+	}
+	
+	.side {
+		padding-top: 150px;
+		border:none;
+	}
+
+	.main {
+		padding-top: 150px;
+		
+	}
+	
+	.navbar{
+		flex-direction:row;
+		justify-content:start;
+		align-items:center;
+	}
+	
+}
+
+@media (max-width: 1100px) {
+	
+	.colonneGest{
+		flex-direction:row;
+		justify-content: space-between;
+	}
+	
+	.panneauSide{
+		height:100%;
+	}
+	
+	.lienPageModif{
+		flex: 1 1 0;
+	}
+	
+	.categ{
+		font-size:100%;
+	}
+	
+	.imageRefRI{
+		width : 75%;
+	}
+	
+}
+
+@media (max-width: 400px) {
+	
+	.bouton{
+		font-size:70%;
+	}
+	
+	.adaptBouton{
+		font-size:50%;
+	}
+}
+
+@media (max-width: 300px) {
+	
+	.bouton{
+		font-size:70%;
+	}
+	
+	.adaptBouton{
+		font-size:40%;
+	}
+}
+/* test Recette -------------------------------------------------- */
+
+.recette {
+	
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 90%;
+	margin-bottom: 20px;
+	box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+	overflow: hidden;
+	background-color: #9d9d9d;
+	border-radius: 15px; /* ajoute des bords arrondis */
+  }
+  
+  .recette:nth-child(3n+1) {
+	margin-right: 0;
+  }
+  
+  .RecetteGauche {
+	width: 50%;
+	padding: 10px;
+	box-sizing: border-box;
+	background-color: #9d9d9d;
+  }
+  
+  .RecetteGauche h2 {
+	font-size: 20px;
+	margin: 0;
+	padding-right: 10px;
+  }
+  
+  .recette-img {
+	width: 100%;
+	height: 0;
+	padding-bottom: 56.25%;
+	position: relative;
+	overflow: hidden;
+	background-color: white;
+	border-radius: 20px;
+	z-index: 0;
+  }
+  
+  .recette-img img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+  }
+  
+  .RecetteGauche p {
+	margin: 0;
+	font-size: 14px;
+  }
+  
+  .RecetteDroite {
+	width: 30%;
+	background-color: #fff;
+	background-color: #9d9d9d;
+  }
+  
+  .recette-info {
+	padding: 10px;
+	border-bottom: 1px solid #ddd;
+  }
+  
+  .recette-difficulte,
+  .recette-temps {
+	margin-bottom: 10px;
+  }
+  
+  .recette-difficulte span,
+  .recette-temps span {
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 5px;
+  }
+  
+  .listeIng {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+  }
+  
+  .listeIngSolo {
+	font-size: 14px;
+	padding: 5px 10px;
+	border-bottom: 1px solid #ddd;
+  }
+
+  .contentR {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	height: 100%;
+  }
+  
+  .R1 {
+	width: 40%;
+	height: 40%;
+	order: 1;
+	margin-right: 10px;
+
+  }
+  
+  .R2 {
+	width: 40%;
+	height: 40%;
+	order: 3;
+	margin-right: 10px;
+  }
+  
+  .R3 {
+	width: 40%;
+	height: 40%;
+	order: 2;
+	margin-right: 10px;
+  }
+  
+  .R4 {
+	width: 40%;
+	height: 40%;
+	order: 4;
+	margin-right: 10px;
+  }
