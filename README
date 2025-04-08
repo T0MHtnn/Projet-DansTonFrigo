@@ -1,2 +1,5 @@
 This WEB project was produced by a group of 4 first-year students, of which I was a part.
 The theme we chose was to create a website that would allow students to find inexpensive recipes using the ingredients in their fridge.
+During this project, I was in charge of the PHP part of the website.
+I handled the entire login/registration section and the various search bars (for ingredients and recipes)
+When integrating all our pages, I was also able to modify the HTML of other people's work and add our emails in the credits section.
